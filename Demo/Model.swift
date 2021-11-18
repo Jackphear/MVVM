@@ -26,4 +26,3 @@ struct NewsData: HandyJSON {
     var thumbnail_pic_s02 = ""
     var is_content = ""
 }
-

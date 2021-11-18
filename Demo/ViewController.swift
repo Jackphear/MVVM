@@ -10,11 +10,11 @@ import UIKit
 import HandyJSON
 
 class ViewController: UIViewController {
+    var viewModel = [ViewModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(button)
-        //
     }
 
     lazy var button: UIButton = {
@@ -29,9 +29,8 @@ class ViewController: UIViewController {
         NetworkTool.shared.requestWith(params: params) { response in
             let json = JSON(response)
             let data = JSONDeserializer<Result>.deserializeFrom(json: json.description)!.data
-            var viewModel = [ViewModel]()
             for item in data {
-                viewModel.append(ViewModel(model: item))
+                self.viewModel.append(ViewModel(model: item))
             }
         } error: { _ in
             print("error")
