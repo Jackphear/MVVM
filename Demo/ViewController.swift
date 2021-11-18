@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(button)
+        //
     }
 
     lazy var button: UIButton = {
