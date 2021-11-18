@@ -14,17 +14,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(button)
+        configData()
+        view.addSubview(tableView)
     }
 
-    lazy var button: UIButton = {
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        button.backgroundColor = .red
-        button.addTarget(self, action: #selector(test), for: .touchUpInside)
-        return button
+   
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: self.view.bounds)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
     }()
 
-    @objc func test() {
+     func configData() {
         let params = ["type": "top", "page": "1", "page_size": "10", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
         NetworkTool.shared.requestWith(params: params) { response in
             let json = JSON(response)
@@ -32,8 +36,27 @@ class ViewController: UIViewController {
             for item in data {
                 self.viewModel.append(ViewModel(model: item))
             }
+            self.tableView.reloadData()
         } error: { _ in
             print("error")
         }
+         
     }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! NewsTableViewCell
+        viewModel[indexPath.row].model.bind(to: cell.obModel)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100;
+    }
+    
 }

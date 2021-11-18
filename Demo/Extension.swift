@@ -30,10 +30,11 @@ extension UILabel {
             return label
         }
     }
-
+    
     func setSize(with text: String) -> CGFloat {
         self.text = text
         let size = sizeThatFits(CGSize(width: 300, height: CGFloat(MAXFLOAT)))
+        print(size.height)
         return size.height + 1
     }
 }
