@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }()
 
      func configData() {
-        let params = ["type": "top", "page": "1", "page_size": "10", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
+        let params = ["type": "top", "page": "1", "page_size": "20", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
         NetworkTool.shared.requestWith(params: params) { response in
             let json = JSON(response)
             let data = JSONDeserializer<Result>.deserializeFrom(json: json.description)!.data
