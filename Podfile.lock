@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.9.1)
   - HandyJSON (5.0.0-beta.1)
+  - LookinServer (1.0.4)
   - SnapKit (4.2.0)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - HandyJSON (from `https://github.com/alibaba/HandyJSON.git`, branch `dev_for_swift5.0`)
+  - LookinServer
   - SnapKit
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - LookinServer
     - SnapKit
     - SwiftyJSON
 
@@ -29,9 +32,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   HandyJSON: 582477127ab3ab65bd2e471815f1a7b846856978
+  LookinServer: 743c1681771d0a8dcc38825325a080c3186404a5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 06ad99c0aa8b47681c27c98433c898d148199518
+PODFILE CHECKSUM: bdebc7b08c0a26dc54148059f5eb022870d8c0ba
 
 COCOAPODS: 1.11.2

@@ -19,6 +19,7 @@
 		93571D2B26F0B7F0002AC387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93571D2926F0B7F0002AC387 /* LaunchScreen.storyboard */; };
 		93571D3626F0B7F0002AC387 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93571D3526F0B7F0002AC387 /* DemoTests.swift */; };
 		93571D4126F0B7F0002AC387 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93571D4026F0B7F0002AC387 /* DemoUITests.swift */; };
+		9375A849274735FA00BF0D01 /* ImageTool.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375A848274735FA00BF0D01 /* ImageTool.swift.swift */; };
 		93F834D827464AF300F93342 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F834D727464AF300F93342 /* NetworkTool.swift */; };
 		93F834DA2746510000F93342 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F834D92746510000F93342 /* Model.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		93571D3C26F0B7F0002AC387 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93571D4026F0B7F0002AC387 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		93571D4226F0B7F0002AC387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9375A848274735FA00BF0D01 /* ImageTool.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTool.swift.swift; sourceTree = "<group>"; };
 		93F834D727464AF300F93342 /* NetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		93F834D92746510000F93342 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A3326FBEE1183066B9098CED /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				93571D2026F0B7EC002AC387 /* SceneDelegate.swift */,
 				93571D2226F0B7EC002AC387 /* ViewController.swift */,
 				93F834D727464AF300F93342 /* NetworkTool.swift */,
+				9375A848274735FA00BF0D01 /* ImageTool.swift.swift */,
 				93F834D92746510000F93342 /* Model.swift */,
 				932F382C27466EED00EC0246 /* ViewModel.swift */,
 				932F382E274673C000EC0246 /* NewsTableViewCell.swift */,
@@ -348,6 +351,7 @@
 				93571D1F26F0B7EC002AC387 /* AppDelegate.swift in Sources */,
 				932F382D27466EED00EC0246 /* ViewModel.swift in Sources */,
 				93571D2126F0B7EC002AC387 /* SceneDelegate.swift in Sources */,
+				9375A849274735FA00BF0D01 /* ImageTool.swift.swift in Sources */,
 				932F3831274676E100EC0246 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

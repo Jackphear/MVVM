@@ -9,4 +9,5 @@ target 'Demo' do
     pod 'SnapKit'
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'LookinServer', :configurations => ['Debug']
 end
