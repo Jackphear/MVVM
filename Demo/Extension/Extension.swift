@@ -32,6 +32,7 @@ extension UILabel {
     }
     
     func setSize(with text: String) -> CGFloat {
+        print("")
         self.text = text
         let size = sizeThatFits(CGSize(width: 200, height: CGFloat(MAXFLOAT)))
         return size.height + 1
