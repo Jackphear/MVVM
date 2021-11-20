@@ -33,20 +33,21 @@ extension UILabel {
     
     func setSize(with text: String) -> CGFloat {
         self.text = text
-        let size = sizeThatFits(CGSize(width: 300, height: CGFloat(MAXFLOAT)))
+        let size = sizeThatFits(CGSize(width: 200, height: CGFloat(MAXFLOAT)))
         return size.height + 1
     }
 }
 
 extension UIImageView {
     func setImage(with url: String) {
+        self.image = UIImage(named: "1")
         let URL = URL(string: url)!
         let downloadQueue = DispatchQueue.global(qos: .default)
         let mainQueue = DispatchQueue.main
         downloadQueue.async {
             var imageData: Data?
             do {
-                self.image = UIImage(named: "1")
+                
                 imageData = try Data(contentsOf: URL)
             } catch {
                 fatalError()

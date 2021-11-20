@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configData()
+        configDataFromLocal()
         view.addSubview(tableView)
+        let label = FPSLabel()
+        self.view.addSubview(label)
     }
 
    
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
         return tableView
     }()
 
-     func configData() {
+     func configDataFromNetwork() {
         let params = ["type": "top", "page": "1", "page_size": "20", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
         NetworkTool.shared.requestWith(params: params) { response in
             let json = JSON(response)
@@ -40,7 +42,17 @@ class ViewController: UIViewController {
         } error: { _ in
             print("error")
         }
-         
+    }
+    
+    func configDataFromLocal() {
+        let path = Bundle.main.path(forResource: "data", ofType: "json")
+        let jsonData = NSData(contentsOfFile: path!)
+        let json = JSON(jsonData!)
+        let data = JSONDeserializer<Result>.deserializeFrom(json: json.description)!.data
+        for item in data {
+            self.viewModel.append(ViewModel(model: item))
+        }
+        self.tableView.reloadData()
     }
 }
 

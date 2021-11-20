@@ -34,6 +34,9 @@ class NewsTableViewCell: UITableViewCell {
     
     lazy var rightimageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 300, y: 15, width: 100, height: 70))
+        let image = UIImage(named: "1")
+        
+        view.image = UIImage(named: "1")
         return view
     }()
     
@@ -70,8 +73,7 @@ class NewsTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-5)
             make.left.equalTo(commentLabel.snp.right).offset(10)
         }
-        
-        //self.rightimageView.setImage(with: data.thumbnail_pic_s)
+//        self.rightimageView.setImage(with: data.thumbnail_pic_s)
         ImageTool.shared.setImageWithUrl(url: data.thumbnail_pic_s) { image, url in
             self.rightimageView.image = image
         }

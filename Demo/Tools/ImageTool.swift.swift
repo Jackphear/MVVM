@@ -23,16 +23,21 @@ class ImageTool: NSObject {
 extension ImageTool {
     public func setImageWithUrl(url: String, handler: @escaping imageHandler) {
         if let image = cache.object(forKey: url as AnyObject) as? UIImage {
-            print(image)
-            DispatchQueue.main.async {
-                handler(image, url)
+            DispatchQueue.global(qos: .userInteractive).async {
+                let decodeImage = self.DecodedImage(image: image)
+                DispatchQueue.main.async {
+                    handler(decodeImage, url)
+                }
             }
             return
         } else {
             let filePath = NSHomeDirectory().appending("/Documents/").appending(url)
             if let image = UIImage(contentsOfFile: filePath) {
-                DispatchQueue.main.async {
-                    handler(self.DecodedImage(image: image), url)
+                DispatchQueue.global(qos: .userInteractive).async {
+                    let decodeImage = self.DecodedImage(image: image)
+                    DispatchQueue.main.async {
+                        handler(decodeImage, url)
+                    }
                 }
                 cache.setObject(image, forKey: url as AnyObject)
             } else {
@@ -43,8 +48,11 @@ extension ImageTool {
                     } else {
                         let image = UIImage(data: data!)!
                         self.cache.setObject(image, forKey: url as AnyObject)
-                        DispatchQueue.main.async {
-                            handler(self.DecodedImage(image: image), url)
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            let decodeImage = self.DecodedImage(image: image)
+                            DispatchQueue.main.async {
+                                handler(decodeImage, url)
+                            }
                         }
                         let filePath = NSHomeDirectory().appending("/Documents/").appending(url)
                         let imageData = image.jpegData(compressionQuality: 400) as NSData?
@@ -72,7 +80,7 @@ extension ImageTool {
                                 bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
         guard let context = ctx else { return nil}
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
-        context.draw(cgImage as! CGLayer, in: rect)
+        context.draw(cgImage, in: rect)
         guard let drawedImage = context.makeImage() else { return nil}
         let result = UIImage(cgImage: drawedImage, scale: image.scale, orientation: image.imageOrientation)
         return result
