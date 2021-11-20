@@ -37,25 +37,3 @@ extension UILabel {
         return size.height + 1
     }
 }
-
-extension UIImageView {
-    func setImage(with url: String) {
-        self.image = UIImage(named: "1")
-        let URL = URL(string: url)!
-        let downloadQueue = DispatchQueue.global(qos: .default)
-        let mainQueue = DispatchQueue.main
-        downloadQueue.async {
-            var imageData: Data?
-            do {
-                
-                imageData = try Data(contentsOf: URL)
-            } catch {
-                fatalError()
-            }
-            mainQueue.async {
-                self.image = UIImage(data: imageData!)
-            }
-        }
-        
-    }
-}
