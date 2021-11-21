@@ -30,7 +30,13 @@ extension UILabel {
             return label
         }
     }
-    
+
+    @discardableResult
+    func added(into superView: UIView) -> UILabel {
+        superView.addSubview(self)
+        return self
+    }
+
     func setSize(with text: String) -> CGFloat {
         print("")
         self.text = text
@@ -43,20 +49,20 @@ extension String {
     func urlEncoding() -> String {
         let unreservedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"
         let unreservedCharset = CharacterSet(charactersIn: unreservedChars)
-        return self.addingPercentEncoding(withAllowedCharacters: unreservedCharset) ?? self
+        return addingPercentEncoding(withAllowedCharacters: unreservedCharset) ?? self
     }
-    
+
     func urlDecoding() -> String {
-        return self.removingPercentEncoding ?? self
+        return removingPercentEncoding ?? self
     }
-    
+
     func base64Encoding() -> String {
         if let data = self.data(using: .utf8) {
             return data.base64EncodedString()
         }
         return self
     }
-    
+
     func base64Decoding() -> String {
         if let data = Data(base64Encoded: self) {
             return String(data: data, encoding: .utf8) ?? ""

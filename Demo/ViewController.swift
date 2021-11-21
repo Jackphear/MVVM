@@ -14,10 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configDataFromLocal()
+        configDataFromNetwork()
         view.addSubview(tableView)
         let label = FPSLabel()
-        view.addSubview(label)
     }
 
     lazy var tableView: UITableView = {
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
     }()
 
     func configDataFromNetwork() {
-        let params = ["type": "top", "page": "1", "page_size": "20", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
+        let params = ["type": "top", "page": "1", "page_size": "30", "is_filter": "1", "key": "1113811726e766953e642681e1371677"]
         NetworkTool.shared.requestWith(params: params) { response in
             let json = JSON(response)
             let data = JSONDeserializer<Result>.deserializeFrom(json: json.description)!.data

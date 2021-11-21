@@ -10,29 +10,29 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
-        let label = UILabel.with(style: .title)
+        let label = UILabel.with(style: .title).added(into: contentView)
         return label
     }()
 
     lazy var sourceLabel: UILabel = {
-        let label = UILabel.with(style: .subTitle)
+        let label = UILabel.with(style: .subTitle).added(into: contentView)
         return label
     }()
 
     lazy var commentLabel: UILabel = {
-        let label = UILabel.with(style: .subTitle)
+        let label = UILabel.with(style: .subTitle).added(into: contentView)
         return label
     }()
 
     lazy var timeLabel: UILabel = {
-        let label = UILabel.with(style: .subTitle)
+        let label = UILabel.with(style: .subTitle).added(into: contentView)
         return label
     }()
 
     lazy var rightimageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 300, y: 15, width: 100, height: 70))
         let image = UIImage(named: "1")
-        DispatchQueue.global(qos: .userInteractive) .async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let decodeImage = ImageTool.shared.DecodedImage(image: image!)
             DispatchQueue.main.async {
                 view.image = decodeImage
@@ -43,14 +43,13 @@ class NewsTableViewCell: UITableViewCell {
     }()
 
     private func configUI(with data: NewsData) {
-        contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.height.equalTo(titleLabel.setSize(with: data.title))
             make.width.equalTo(270)
             make.top.equalToSuperview().offset(15)
             make.left.equalToSuperview().offset(20)
         }
-        contentView.addSubview(sourceLabel)
+
         sourceLabel.snp.makeConstraints { make in
             make.height.equalTo(sourceLabel.setSize(with: data.author_name))
             make.width.equalTo(55)
@@ -58,7 +57,6 @@ class NewsTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(20)
         }
 
-        contentView.addSubview(commentLabel)
         commentLabel.snp.makeConstraints { make in
             make.height.equalTo(commentLabel.setSize(with: data.category))
             make.width.equalTo(30)
@@ -66,7 +64,6 @@ class NewsTableViewCell: UITableViewCell {
             make.left.equalTo(sourceLabel.snp.right).offset(10)
         }
 
-        contentView.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { make in
             make.height.equalTo(timeLabel.setSize(with: data.date))
             make.width.equalTo(140)

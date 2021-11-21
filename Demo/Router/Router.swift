@@ -18,12 +18,10 @@ extension RouterProtocol {
     }
 }
 
-let appScheme = "router"
-
 class Router {
     private let httpString = "http,httpss"
     var targetDic = [String: RouterProtocol.Type]()
-
+    let appScheme = "router"
     static let shared = Router()
     private init() {}
 
