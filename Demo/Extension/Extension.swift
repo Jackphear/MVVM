@@ -38,3 +38,29 @@ extension UILabel {
         return size.height + 1
     }
 }
+
+extension String {
+    func urlEncoding() -> String {
+        let unreservedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"
+        let unreservedCharset = CharacterSet(charactersIn: unreservedChars)
+        return self.addingPercentEncoding(withAllowedCharacters: unreservedCharset) ?? self
+    }
+    
+    func urlDecoding() -> String {
+        return self.removingPercentEncoding ?? self
+    }
+    
+    func base64Encoding() -> String {
+        if let data = self.data(using: .utf8) {
+            return data.base64EncodedString()
+        }
+        return self
+    }
+    
+    func base64Decoding() -> String {
+        if let data = Data(base64Encoded: self) {
+            return String(data: data, encoding: .utf8) ?? ""
+        }
+        return self
+    }
+}

@@ -65,7 +65,7 @@ extension ImageTool {
         }
     }
     
-    private func DecodedImage(image: UIImage) -> UIImage?{
+    public func DecodedImage(image: UIImage) -> UIImage?{
         guard let cgImage = image.cgImage else { return nil}
         guard let colorSpace = cgImage.colorSpace else { return nil}
         let width = cgImage.width

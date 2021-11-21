@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configDataFromNetwork()
+        configDataFromLocal()
         view.addSubview(tableView)
         let label = FPSLabel()
         view.addSubview(label)
@@ -70,5 +70,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let webUrl = viewModel[indexPath.row].model.value.url
+        let openUrl = "http://web/?url=\(webUrl)"
+        RouterManager.openUrl(url: openUrl)
+    }
+}
+
+extension ViewController: RouterProtocol {
+    static func targetWith(pa: [String : Any]) -> RouterProtocol? {
+        let vc = ViewController()
+        return vc
     }
 }
