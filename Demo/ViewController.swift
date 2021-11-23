@@ -5,6 +5,7 @@
 //  Created by 王韬 on 2021/9/14.
 //
 
+
 import HandyJSON
 import SwiftyJSON
 import UIKit
@@ -14,9 +15,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configDataFromNetwork()
+        configDataFromLocal()
         view.addSubview(tableView)
-        let label = FPSLabel()
+        (UIApplication.shared.delegate?.window)!!.rootViewController?.view.addSubview(label)
     }
 
     lazy var tableView: UITableView = {
@@ -25,6 +26,11 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
+    }()
+    
+    lazy var label: FPSLabel = {
+        let fpsLabel = FPSLabel(frame: CGRect(x: UIScreen.main.bounds.width - 60.0, y:UIScreen.main.bounds.height - 25.0 , width: 40.0, height: 20.0))
+        return fpsLabel
     }()
 
     func configDataFromNetwork() {
@@ -73,6 +79,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let openUrl = "http://web/?url=\(webUrl)"
         RouterManager.openUrl(url: openUrl)
     }
+    
 }
 
 extension ViewController: RouterProtocol {
